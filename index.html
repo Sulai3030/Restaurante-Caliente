@@ -3,71 +3,45 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<div class=" jumbotron ">
-            <link rel="stylesheet " href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css
-        " integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO " crossorigin="anonymous ">
-              <initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Restaurante Caliente</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
         crossorigin="anonymous"></script>
-    <title>Reservations</title>
-</head>
-<title>Tables Page</title>
-
-<!-- Latest compiled and minified CSS & JS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 </head>
+
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <div class="jumbotron">
-        <h1 class="text-center"><span class="glyphicon glyphicon-fire"></span> Cephi's Caliente Resatante>
-        <hr>
-        <h2 class="text-center">Current Reservations and Waiting List</h2>
-        <br>
+        <div class="jumbotron">
+            <h1 class="text-center"><span class="glyphicon glyphicon-fire"></span> Cephi's Caliente Resatante>
+                <hr>
+                <h2 class="text-center">Current Reservations and Waiting List</h2>
+                <br>
 
-        <div class="text-center">
-            <a href="/reserve"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>
-            <a href="/tables"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Tables</button></a>
+                <div class="text-center">
+                    <a href="/reserve"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-credit-card"></span>
+                            Make Reservation</button></a>
+                    <a href="/tables"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-credit-card"></span>
+                            Tables</button></a>
+                </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
 
-            <!-- Current Tables in Use
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">Current Reservations</h4>
-                </div>
-                <div class="panel-body" id="tableSection">
-                </div>
-            </div> -->
+                <footer class="footer">
+                    <div class="container">
+                        <p>Control Panel</p>
+                        <p><a href="#" id="clear">Clear Table</a> | <a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API
+                                Wait List</a></p>
+                    </div>
+                </footer>
 
-            <!-- <Waiting List Panel
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">Waiting List</h4>
-                </div>
-                <div class="panel-body" id="waitlistSection">
-                </div>
             </div>
-        </div>
-    </div>
-> -->
-
-    <footer class="footer">
-      <div class="container">
-          <p>Control Panel</p>
-        <p><a href="#" id="clear">Clear Table</a> | <a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a></p>
-      </div>
-    </footer>
-
-</div>
 
 </body>
-

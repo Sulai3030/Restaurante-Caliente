@@ -1,7 +1,10 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
-var reservations = require("./database.js").Table("reservations");
+var Table = require("./database.js")
+var reservations = new Table("RESERVATIONS");
+reservations.connect();
+
 
 var app = express();
 var PORT = process.env.PORT || 8080;
@@ -14,7 +17,7 @@ reservations.getItem("isWaitlist", "false").then(function(res){
     tables = res;
 });
 var waitlist = [];
-reservations.getAll("isWaitlist", "true").then(function(res){
+reservations.getItem("isWaitlist", "true").then(function(res){
     waitlist = res;
 });
 

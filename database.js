@@ -1,5 +1,4 @@
 const mysql = require("mysql");
-const cTable = require('console.table');
 
 function Table(name) {
     this.name = name;
@@ -32,9 +31,9 @@ function Table(name) {
             var compare = comparison || "="
             var escaper = [this.name, column, target]
             if (compare === "=") {
-                var query = "SELECT * FROM ?? WHERE ?? = ? ORDER BY id DESC";
+                var query = "SELECT * FROM ?? WHERE ?? = ? ORDER BY user_id DESC";
             } else if (compare === "<") {
-                var query = "SELECT * FROM ?? WHERE ?? < ? ORDER BY id DESC";
+                var query = "SELECT * FROM ?? WHERE ?? < ? ORDER BY user_id DESC";
             }
             if (amount) {
                 query += " LIMIT ?"
@@ -92,7 +91,7 @@ function Table(name) {
     }
     this.getMostRecent = function (amount, source) {
         return new Promise((resolve, reject) => {
-            var query = "SELECT * FROM ?? WHERE source = ? ORDER BY id DESC LIMIT ?;"
+            var query = "SELECT * FROM ?? WHERE source = ? ORDER BY user_id DESC LIMIT ?;"
             this.connection.query(query, [this.name, source, amount], function (err, res) {
                 if (err) {
                     console.log(err)
@@ -107,21 +106,3 @@ function Table(name) {
 
 module.exports = Table
 
-
-
-
-
-// EXAMPLE SEQUENCE TO TEST OUT OUR TABLE CONSTRUCTOR
-// var auditionsDB = new Table("auditions")
-// auditionsDB.connect()
-// // auditions.print()
-// auditionsDB.getMostRecent(1).then(function (result) {
-//     console.log(result)
-//     auditionsDB.connection.end()
-// })
-
-
-
-// var testAudition = { title: "Rakel'in auditioni", compensation: "Paid", state: "NY", organization: "Intellion Inc." }
-// auditionDB.insertAudition(testAudition)
-// auditionDB.connection.end()

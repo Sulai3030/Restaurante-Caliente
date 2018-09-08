@@ -44,11 +44,16 @@ app.get("/api/waitlist", function (req, res) {
 app.post("/api", function (req, res) {
     var newCustomer = req.body;
     if (tables.length >= 5) {
+        newCustomer.isWaitlist = true;
         waitlist.push(newCustomer);
     }
     else {
+        newCustomer.isWaitlist = false;
         tables.push(newCustomer);
     }
+    reservations.newItem(newCustomer).then(function(res){
+        console.log(res)
+    });
     res.json(newCustomer);
 });
 

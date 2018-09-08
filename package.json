@@ -1,0 +1,25 @@
+{
+  "name": "Restaurante-Caliente",
+  "version": "1.0.0",
+  "description": "The hottest new restaurant south of Noho.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evansimonross/Restaurante-Caliente.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evansimonross/Restaurante-Caliente/issues"
+  },
+  "homepage": "https://github.com/evansimonross/Restaurante-Caliente#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  }
+}

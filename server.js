@@ -13,11 +13,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 var tables = [];
-reservations.getItem("isWaitlist", "false").then(function(res){
+reservations.getItem("isWaitlist", "0").then(function (res) {
     tables = res;
 });
 var waitlist = [];
-reservations.getItem("isWaitlist", "true").then(function(res){
+reservations.getItem("isWaitlist", "1").then(function (res) {
     waitlist = res;
 });
 
@@ -44,17 +44,32 @@ app.get("/api/waitlist", function (req, res) {
 app.post("/api", function (req, res) {
     var newCustomer = req.body;
     if (tables.length >= 5) {
-        newCustomer.isWaitlist = true;
+        newCustomer.isWaitlist = 1;
         waitlist.push(newCustomer);
     }
     else {
-        newCustomer.isWaitlist = false;
+        newCustomer.isWaitlist = 0;
         tables.push(newCustomer);
     }
-    reservations.newItem(newCustomer).then(function(res){
-        console.log(res)
+    reservations.newItem(newCustomer).then(function (response) {
+        console.log(response)
     });
     res.json(newCustomer);
+});
+
+app.post("/api/clear", function (req, res) {
+    var pword = req.body.pword;
+    if (pword != "caliente") {
+        res.send("ACCESS DENIED");
+    }
+    else {
+        tables = [];
+        waitlist = [];
+        reservations.deleteItem("user_id", 0, ">").then(function (response) {
+            console.log(response);    
+        });
+        res.send("DATABASE CLEARED");
+    }
 });
 
 

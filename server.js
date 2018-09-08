@@ -1,6 +1,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
+var reservations = require("./database.js").Table("reservations");
 
 var app = express();
 var PORT = process.env.PORT || 8080;
@@ -8,23 +9,14 @@ var PORT = process.env.PORT || 8080;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var tables = [
-    {
-        customerName: "Jordan Buffaloe",
-        phoneNumber: "1-800-MATTRES",
-        customerEmail: "jordan@buffaloe.ny",
-        customerID: "buff_jordan"
-    }
-];
-
-var waitlist = [
-    {
-        customerName: "Victor Quinn",
-        phoneNumber: "877-393-4448",
-        customerEmail: "mail@victorquinn.com",
-        customerId: "q_vic"
-    }
-];
+var tables = [];
+reservations.getItem("isWaitlist", "false").then(function(res){
+    tables = res;
+});
+var waitlist = [];
+reservations.getAll("isWaitlist", "true").then(function(res){
+    waitlist = res;
+});
 
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "index.html"));

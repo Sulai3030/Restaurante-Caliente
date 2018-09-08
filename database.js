@@ -36,8 +36,8 @@ function Table(name) {
             } else if (compare === "<") {
                 var query = "SELECT * FROM ?? WHERE ?? < ? ORDER BY id DESC";
             }
-            if (amount){
-                query+=" LIMIT ?"
+            if (amount) {
+                query += " LIMIT ?"
                 escaper.push(amount)
             }
             this.connection.query(query, escaper, function (err, res) {
@@ -61,39 +61,16 @@ function Table(name) {
             });
         })
     };
-    this.newItem = function (audition) {
+    this.newItem = function (newUser) {
         return new Promise((resolve, reject) => {
-            if (this.name === "auditions") {
-                var query = "INSERT INTO auditions (title,source,category,tags,isUnion,compensation,link,organization,state,date) values (?,?,?,?,?,?,?,?,?,?);";
-                var escaper = [audition.title, audition.source, audition.category, audition.tags, audition.isUnion, audition.compensation, audition.link, audition.organization, audition.state, audition.date]
-                this.connection.query(query, escaper, function (err, res) {
-                    if (err) {
-                        console.log(err)
-                        reject(err)
-                    }
-                    resolve("audition successfully added")
-                })
-            }
-        })
-    };
-    this.newGroup = function (auditionList) {
-        return new Promise((resolve, reject) => {
-            if (auditionList.length === 0) {
-                resolve("No new auditions to add")
-                return
-            }
-            var query = "INSERT INTO auditions (title, source, category, tags, isUnion, compensation, link, organization, state, date) values ?; ";
-            var escaper = [];
-            for (var i = auditionList.length - 1; i > -1; i--) {
-                var audition = auditionList[i]
-                escaper.push([audition.title, audition.source, audition.category, audition.tags, audition.isUnion, audition.compensation, audition.link, audition.organization, audition.state, audition.date])
-            }
-            this.connection.query(query, [escaper], function (err, res) {
+            var query = "INSERT INTO ? (user_id,first_name,last_name,phone_number,email,user_name,isWaitlist) values (?,?,?,?,?,?,?);";
+            var escaper = [this.name, newUser.id, newUser.firstName, newUser.lastName, newUser.phoneNumber, newUser.email, newUser.userName,newUser.isWaitlist]
+            this.connection.query(query, escaper, function (err, res) {
                 if (err) {
                     console.log(err)
                     reject(err)
                 }
-                resolve(auditionList.length + " auditions successfully added")
+                resolve("user successfully added")
             })
         })
     };

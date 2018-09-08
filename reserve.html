@@ -108,7 +108,8 @@
 
         $.post(currentURL + "/api/", newReservation,
             function (data) {
-                if (data.isWaiting===0) {
+                console.log(data);
+                if (data.isWaitlist===0) {
                     alert("Yay! You are officially booked!")
                 }
 

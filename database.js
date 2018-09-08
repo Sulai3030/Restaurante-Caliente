@@ -62,8 +62,8 @@ function Table(name) {
     };
     this.newItem = function (newUser) {
         return new Promise((resolve, reject) => {
-            var query = "INSERT INTO ? (first_name, last_name, phone_number, email, user_name, isWaitlist) values (?,?,?,?,?,?);";
-            var escaper = [this.name, newUser.first_name, newUser.last_name, newUser.phone_number, newUser.email, newUser.user_name,newUser.isWaitlist]
+            var query = "INSERT INTO RESERVATIONS (first_name, last_name, phone_number, email, user_name, isWaitlist) values (?);";
+            var escaper = [[newUser.first_name, newUser.last_name, newUser.phone_number, newUser.email, newUser.user_name,newUser.isWaitlist]]
             this.connection.query(query, escaper, function (err, res) {
                 if (err) {
                     console.log(err)
